@@ -17,5 +17,18 @@ namespace NetExtensions.NetCore.Types
         {
             return s ?? ""; 
         }
+
+        public static int AsInt(this string s)
+        {
+            int o = 0;
+            if(int.TryParse(s, out o))
+            {
+                return o;
+            }
+            else
+            {
+                throw new ConversionException($"Cannot convert {s} to integer");
+            }
+        }
     }
 }
