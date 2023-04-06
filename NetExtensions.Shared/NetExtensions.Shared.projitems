@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>bd3a5e9d-b645-4a8b-a3d3-c9223d484990</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>NetExtensions.Shared</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Async\Extensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ConversionException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DateAndTime\Extensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Types\Extensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)VBImplementations\Extensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)YearMonth.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)YearWeek.cs" />
+  </ItemGroup>
+</Project>

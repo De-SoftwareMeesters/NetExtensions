@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NetExtensions.NetCore.Async
+namespace NetExtensions
 {
-    public static class Extensions
+    public static class Async
     {
         public static void FireAndForget(this Task task, Action<Exception> errorHandler = null)
         {

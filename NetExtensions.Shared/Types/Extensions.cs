@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NetExtensions.NetCore.Types
+namespace NetExtensions
 {
-    public static class Extensions
+    public static class Types
     {
         public static bool IsOnlyNumbers(this string s)
         {
@@ -99,13 +99,71 @@ namespace NetExtensions.NetCore.Types
             catch { throw new ConversionException($"Error converting string {s} to DateTime"); }
         }
 
-    }
-    public class ConversionException : Exception
-    {
-        public ConversionException(string message) : base(message)
+        public static decimal TruncateAfter(this decimal value, int positions)
         {
+            string _str = value.ToString();
+            if (_str.Contains(",") || _str.Contains("."))
+            {
+                int _start = _str.IndexOf(",");
+                if (_start == -1)
+                {
+                    _start = _str.IndexOf(".");
+                }
+                string _strTruncated = null;
+                if (_str.Length > positions + _start)
+                {
+                    _strTruncated = _str.Remove(_start + positions + 1, _str.Length - (_start + positions) - 1);
+                }
+                else
+                {
+                    _strTruncated = value.ToString();
+                }
+                return Convert.ToDecimal(_strTruncated);
+            }
+            else
+            {
+                return Convert.ToDecimal(_str);
+            }
 
         }
+
+        public static decimal Round2(this decimal value)
+        {
+            return Convert.ToDecimal(Math.Round(value, 2));
+        }
+
+        public static decimal Round6(this decimal value)
+        {
+            return Convert.ToDecimal(Math.Round(value, 6));
+        }
+
+        public static decimal? Round2(this decimal? value)
+        {
+            if (value.HasValue)
+            {
+                return Math.Round(value.Value, 2);
+            }
+            else
+            {
+                return value;
+            }
+        }
+
+        public static string ToArrayString(this string[] list)
+        {
+            string retval = "";
+
+            foreach (var item in list)
+            {
+                retval += item + ",";
+            }
+
+            if (!string.IsNullOrEmpty(retval) && retval.Last() == ',') retval = retval.Remove(retval.Length - 1, 1);
+
+            return retval;
+        }
+
+
     }
 }
 
