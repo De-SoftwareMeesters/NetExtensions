@@ -1,4 +1,7 @@
-﻿namespace NetExtensions
+﻿using System;
+using System.Collections.Generic;
+
+namespace NetExtensions
 {
     public class YearWeek
     {

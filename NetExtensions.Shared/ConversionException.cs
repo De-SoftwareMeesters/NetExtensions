@@ -1,4 +1,6 @@
-﻿namespace NetExtensions
+﻿using System;
+
+namespace NetExtensions
 {
     public class ConversionException : Exception
     {
