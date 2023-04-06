@@ -27,23 +27,43 @@ namespace NetExtensions.NetCore.DateAndTime
             return result;
         }
 
+       
+
         /// <summary>
         /// This method tries to convert a string to a DateTime.
         /// I'm dutch, so I expect you to pass in a string in the Dutch date format (DD-MM-YYYY)
+        /// Other supported formats are:
+        /// yyyymmdd
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
         /// <exception cref="ConversionException"></exception>
-        public static DateTime ToDateTime(this string s)
+        public static DateTime ConvertToDateTime(this string s, string format = "dd-mm-yyyy")
         {
             try
             {
-                int d, m, j;
-                int.TryParse(s.Substring(0, 2), out d);
-                int.TryParse(s.Substring(3, 2), out m);
-                int.TryParse(s.Substring(6, 4), out j);
+                int d = DateTime.Now.Day;
+                int m = DateTime.Now.Month;
+                int j = DateTime.Now.Year;
+                if (format == "dd-mm-yyyy")
+                {
+
+                    int.TryParse(s.Substring(0, 2), out d);
+                    int.TryParse(s.Substring(3, 2), out m);
+                    int.TryParse(s.Substring(6, 4), out j);
+                }
+
+                if (format == "yyyymmdd")
+                {
+
+                    int.TryParse(s.Substring(6, 2), out d);
+                    int.TryParse(s.Substring(4, 2), out m);
+                    int.TryParse(s.Substring(0, 4), out j);
+
+                }
 
                 return new DateTime(j, m, d);
+
             }
             catch { throw new ConversionException($"Error converting string {s} to DateTime"); }
         }
