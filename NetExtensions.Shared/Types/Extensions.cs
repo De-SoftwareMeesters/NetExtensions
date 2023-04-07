@@ -110,6 +110,25 @@ namespace NetExtensions
             return retval;
         }
 
+        public static void TrySet<T>(this T o, T value)
+        {
+            try
+            {
+                o = value;
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        public static string AddEol(this string s)
+        {
+            return $"{s}\r\n";
+        }
+
+      
+
 
     }
 }
