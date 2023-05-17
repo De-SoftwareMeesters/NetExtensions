@@ -18,6 +18,11 @@ namespace NetExtensions
             return s ?? "";
         }
 
+        public static string TryTrim(this string s)
+        {
+            return s.NullThenEmpty().Trim();
+        }
+
         public static int ConvertToInt(this string s)
         {
             int o = 0;

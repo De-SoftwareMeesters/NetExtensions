@@ -53,6 +53,14 @@ namespace NetExtensions
                     int.TryParse(s.Substring(6, 4), out j);
                 }
 
+                if (format.ToLower() == "yyyy-mm-dd")
+                {
+
+                    int.TryParse(s.Substring(0, 4), out j);
+                    int.TryParse(s.Substring(5, 2), out m);
+                    int.TryParse(s.Substring(8, 2), out d);
+                }
+
                 if (format == "yyyymmdd")
                 {
 
